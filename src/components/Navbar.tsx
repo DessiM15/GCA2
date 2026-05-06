@@ -34,7 +34,7 @@ export default function Navbar() {
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? "bg-white/85 backdrop-blur-lg border-b border-gray-200/60 shadow-sm"
+          ? "bg-navy/80 backdrop-blur-lg border-b border-white/10 shadow-lg"
           : "bg-transparent"
       }`}
     >
@@ -51,7 +51,7 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-[13px] font-medium tracking-wide uppercase text-gray-600 hover:text-navy transition-colors"
+                    className="text-[13px] font-medium tracking-wide uppercase text-white/80 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -72,7 +72,7 @@ export default function Navbar() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    className="text-[13px] font-medium tracking-wide uppercase text-gray-600 hover:text-navy transition-colors"
+                    className="text-[13px] font-medium tracking-wide uppercase text-white/80 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -111,7 +111,7 @@ export default function Navbar() {
             onClick={() => setMobileOpen(!mobileOpen)}
             className={`md:hidden p-2 transition-colors ${
               scrolled
-                ? "text-gray-700 hover:text-navy absolute right-4"
+                ? "text-white hover:text-white/80 absolute right-4"
                 : "text-white hover:text-white/80"
             }`}
             aria-label="Toggle menu"
@@ -137,7 +137,7 @@ export default function Navbar() {
         <div
           className={`md:hidden border-t ${
             scrolled
-              ? "bg-white/95 backdrop-blur-lg border-gray-200"
+              ? "bg-navy/95 backdrop-blur-lg border-white/10"
               : "bg-navy-dark/95 backdrop-blur-lg border-white/10"
           }`}
         >
@@ -149,7 +149,7 @@ export default function Navbar() {
                 onClick={() => setMobileOpen(false)}
                 className={`block py-2.5 text-sm font-medium tracking-wide uppercase transition-colors ${
                   scrolled
-                    ? "text-gray-700 hover:text-navy"
+                    ? "text-white/80 hover:text-white"
                     : "text-white/90 hover:text-white"
                 }`}
               >

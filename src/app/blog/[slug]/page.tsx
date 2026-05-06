@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { posts } from "@/data/posts";
 import { notFound } from "next/navigation";
@@ -115,6 +116,16 @@ export default async function BlogPostPage({
           </ScrollReveal>
         </div>
       </section>
+
+      <div className="relative h-64 sm:h-80 lg:h-96 w-full">
+        <Image
+          src={post.image}
+          alt={post.title}
+          fill
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-navy/20" />
+      </div>
 
       <section className="py-16 sm:py-24 bg-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">

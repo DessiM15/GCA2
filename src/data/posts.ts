@@ -4,6 +4,7 @@ export interface BlogPost {
   excerpt: string;
   date: string;
   category: string;
+  image: string;
   content: string;
 }
 
@@ -15,6 +16,7 @@ export const posts: BlogPost[] = [
       "Copper-Nickel alloys have become the material of choice for seawater piping systems. Learn why these alloys outperform alternatives in corrosive marine environments.",
     date: "2025-04-15",
     category: "Industry Knowledge",
+    image: "/images/blog-cuni.jpg",
     content: `Copper-Nickel (CuNi) alloys — particularly the 90/10 and 70/30 compositions — have long been recognized as the premier material for seawater piping systems in offshore oil & gas platforms, naval vessels, and coastal power plants.
 
 ## Why CuNi?
@@ -48,6 +50,7 @@ Whether you need standard CuNi fittings and flanges or custom specifications for
       "Selecting between carbon steel and stainless steel pipe involves balancing cost, corrosion resistance, and service conditions. Here's what you need to know.",
     date: "2025-03-28",
     category: "Industry Knowledge",
+    image: "/images/blog-steel.jpg",
     content: `Choosing between carbon steel and stainless steel pipe is one of the most fundamental decisions in industrial piping design. The right choice depends on the specific service conditions, budget constraints, and long-term performance requirements of your project.
 
 ## Carbon Steel Pipe
@@ -92,6 +95,7 @@ Gulf Coast Alloys supplies both carbon steel and stainless steel pipe from trust
       "Direct mill partnerships in South Korea give us a competitive edge in quality, pricing, and delivery. Here's how our sourcing strategy benefits your projects.",
     date: "2025-03-10",
     category: "Company Spotlight",
+    image: "/images/blog-korea.jpg",
     content: `Since our founding, Gulf Coast Alloys has built our business on a simple principle: go direct to the source. Our extensive network of mill partnerships in South Korea — spanning pipe mills, fitting manufacturers, and flange producers — is the foundation of everything we offer our customers.
 
 ## The South Korean Advantage

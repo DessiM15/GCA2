@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import ScrollReveal from "./ScrollReveal";
 
@@ -39,20 +40,31 @@ export default function PartnersPreview() {
           </ScrollReveal>
 
           <ScrollReveal direction="right" delay={0.2}>
-            <div className="grid grid-cols-3 gap-6">
-              {highlights.map((item) => (
-                <div
-                  key={item.label}
-                  className="text-center p-6 border border-white/10 bg-white/5"
-                >
-                  <div className="text-4xl sm:text-5xl font-bold text-steel-light">
-                    {item.count}
+            <div className="space-y-6">
+              <div className="relative h-64 overflow-hidden">
+                <Image
+                  src="/images/partners-img.jpg"
+                  alt="Offshore drilling platform at sunset"
+                  fill
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-navy/20" />
+              </div>
+              <div className="grid grid-cols-3 gap-4">
+                {highlights.map((item) => (
+                  <div
+                    key={item.label}
+                    className="text-center p-5 border border-white/10 bg-white/5"
+                  >
+                    <div className="text-3xl sm:text-4xl font-bold text-steel-light">
+                      {item.count}
+                    </div>
+                    <div className="text-xs tracking-wider uppercase text-gray-400 mt-2">
+                      {item.label}
+                    </div>
                   </div>
-                  <div className="text-xs tracking-wider uppercase text-gray-400 mt-2">
-                    {item.label}
-                  </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </ScrollReveal>
         </div>

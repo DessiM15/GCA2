@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { posts } from "@/data/posts";
 import ScrollReveal from "@/components/ScrollReveal";
@@ -35,7 +36,16 @@ export default function BlogPage() {
                   href={`/blog/${post.slug}`}
                   className="group block h-full"
                 >
-                  <article className="h-full border border-gray-200 p-8 hover:border-steel/30 hover:shadow-lg transition-all">
+                  <article className="h-full border border-gray-200 hover:border-steel/30 hover:shadow-lg transition-all overflow-hidden">
+                    <div className="relative h-48 overflow-hidden">
+                      <Image
+                        src={post.image}
+                        alt={post.title}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                    <div className="p-8">
                     <div className="flex items-center gap-3 mb-4">
                       <span className="text-xs font-medium tracking-wider uppercase text-steel">
                         {post.category}
@@ -56,6 +66,7 @@ export default function BlogPage() {
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>
                     </span>
+                    </div>
                   </article>
                 </Link>
               </ScrollReveal>
