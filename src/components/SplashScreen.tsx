@@ -39,8 +39,8 @@ export default function SplashScreen({
                 <Image
                   src="/images/gca-logo.png"
                   alt="Gulf Coast Alloys"
-                  width={200}
-                  height={200}
+                  width={260}
+                  height={260}
                   priority
                 />
               </motion.div>

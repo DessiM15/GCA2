@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
 
@@ -8,11 +8,36 @@ const VIDEO_URL =
 
 export default function HeyGenDemo() {
   const [isOpen, setIsOpen] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [inlinePlaying, setInlinePlaying] = useState(false);
   const inlineRef = useRef<HTMLVideoElement>(null);
+  const modalRef = useRef<HTMLVideoElement>(null);
 
-  function handlePlay() {
+  const playInline = useCallback(() => {
+    const v = inlineRef.current;
+    if (!v) return;
+    v.play().then(() => setInlinePlaying(true)).catch(() => {});
+  }, []);
+
+  const pauseInline = useCallback(() => {
+    const v = inlineRef.current;
+    if (!v) return;
+    v.pause();
+    v.currentTime = 0;
+    setInlinePlaying(false);
+  }, []);
+
+  function openModal() {
+    pauseInline();
     setIsOpen(true);
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+    const v = modalRef.current;
+    if (v) {
+      v.pause();
+      v.currentTime = 0;
+    }
   }
 
   return (
@@ -25,40 +50,42 @@ export default function HeyGenDemo() {
               <div className="relative">
                 <div
                   className="relative bg-gray-900 rounded-lg overflow-hidden aspect-video shadow-2xl cursor-pointer group"
-                  onClick={handlePlay}
+                  onClick={openModal}
+                  onMouseEnter={playInline}
+                  onMouseLeave={pauseInline}
                 >
-                  {/* Video preview (muted, paused) */}
+                  {/* Video element */}
                   <video
                     ref={inlineRef}
                     src={VIDEO_URL}
                     className="absolute inset-0 w-full h-full object-cover"
                     muted
                     playsInline
-                    preload="metadata"
-                    onMouseEnter={() => {
-                      inlineRef.current?.play();
-                      setIsPlaying(true);
-                    }}
-                    onMouseLeave={() => {
-                      if (inlineRef.current) {
-                        inlineRef.current.pause();
-                        inlineRef.current.currentTime = 0;
-                        setIsPlaying(false);
-                      }
-                    }}
+                    loop
+                    preload="auto"
+                    crossOrigin="anonymous"
+                  />
+
+                  {/* Fallback gradient (shows while video loads) */}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-navy via-navy-light to-steel/40 transition-opacity duration-500 ${
+                      inlinePlaying ? "opacity-0" : "opacity-100"
+                    }`}
                   />
 
                   {/* Dark overlay */}
                   <div
-                    className={`absolute inset-0 bg-black/30 transition-opacity duration-300 ${
-                      isPlaying ? "opacity-0 group-hover:opacity-30" : "opacity-40"
+                    className={`absolute inset-0 transition-opacity duration-300 ${
+                      inlinePlaying
+                        ? "bg-black/10"
+                        : "bg-black/40"
                     }`}
                   />
 
                   {/* Play button */}
                   <div
                     className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
-                      isPlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
+                      inlinePlaying ? "opacity-0 group-hover:opacity-100" : "opacity-100"
                     }`}
                   >
                     <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-sm flex items-center justify-center border border-white/30 hover:bg-white/30 transition-colors">
@@ -154,12 +181,12 @@ export default function HeyGenDemo() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4"
-            onClick={() => setIsOpen(false)}
+            onClick={closeModal}
           >
             {/* Close button */}
             <button
               className="absolute top-4 right-4 text-white/70 hover:text-white transition-colors z-10"
-              onClick={() => setIsOpen(false)}
+              onClick={closeModal}
             >
               <svg
                 className="h-8 w-8"
@@ -185,11 +212,13 @@ export default function HeyGenDemo() {
               onClick={(e) => e.stopPropagation()}
             >
               <video
+                ref={modalRef}
                 src={VIDEO_URL}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover bg-black"
                 controls
                 autoPlay
                 playsInline
+                crossOrigin="anonymous"
               />
             </motion.div>
           </motion.div>

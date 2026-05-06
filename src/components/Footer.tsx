@@ -11,8 +11,8 @@ export default function Footer() {
             <Image
               src="/images/gca-logo.png"
               alt="Gulf Coast Alloys"
-              width={120}
-              height={120}
+              width={160}
+              height={160}
               className="mb-4"
             />
             <p className="text-sm text-gray-400 leading-relaxed">
