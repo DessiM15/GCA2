@@ -41,7 +41,7 @@ export default function Navbar() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div
           className={`flex items-center transition-all duration-500 ${
-            scrolled ? "h-16 justify-center" : "h-20 justify-between"
+            scrolled ? "h-20 justify-center" : "h-24 justify-between"
           }`}
         >
           {scrolled ? (
@@ -62,8 +62,8 @@ export default function Navbar() {
                 <Image
                   src="/images/gca-logo.png"
                   alt="Gulf Coast Alloys"
-                  width={42}
-                  height={42}
+                  width={64}
+                  height={64}
                 />
               </Link>
 
@@ -85,8 +85,8 @@ export default function Navbar() {
                 <Image
                   src="/images/gca-logo.png"
                   alt="Gulf Coast Alloys"
-                  width={50}
-                  height={50}
+                  width={72}
+                  height={72}
                 />
                 <span className="hidden sm:block text-lg font-bold text-white drop-shadow-lg">
                   Gulf Coast Alloys
