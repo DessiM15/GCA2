@@ -3,8 +3,6 @@ import { Inter } from "next/font/google";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
-import DemoModeProvider from "@/components/DemoModeProvider";
-import DemoToggle from "@/components/DemoToggle";
 import ClickToCall from "@/components/ClickToCall";
 import "./globals.css";
 
@@ -89,15 +87,12 @@ export default function RootLayout({
         {/* <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');` }} /> */}
       </head>
       <body className="min-h-full flex flex-col font-sans antialiased">
-        <DemoModeProvider>
-          <SplashScreen>
-            <Navbar />
-            <main className="flex-1">{children}</main>
-            <Footer />
-            <DemoToggle />
-            <ClickToCall />
-          </SplashScreen>
-        </DemoModeProvider>
+        <SplashScreen>
+          <Navbar />
+          <main className="flex-1">{children}</main>
+          <Footer />
+          <ClickToCall />
+        </SplashScreen>
       </body>
     </html>
   );
