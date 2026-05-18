@@ -21,6 +21,21 @@
 
 ---
 
+## Demo Removal (COMPLETED — on phase-2 branch)
+
+### What was done:
+- Removed `DemoModeProvider`, `DemoToggle`, `DemoSection`, `EmailCampaignDemo`, `HeyGenDemo`, `SocialMediaDemo` — 6 component files deleted (1,477 lines)
+- Cleaned `layout.tsx` — removed DemoModeProvider wrapper and DemoToggle from the component tree
+- Cleaned `page.tsx` — removed all DemoSection wrappers and demo content imports
+- Site now shows only live production content: Hero, About, Services, Partners, Blog, CTA
+
+### Important:
+- This is committed on the `phase-2` branch locally, NOT pushed to remote
+- Do NOT push until instructed — client hasn't paid for Phase 2+ work yet
+- Phase 1 (SEO Foundation) IS already pushed to `main`
+
+---
+
 ## Phase 2: Structured Data + Blog SEO (NEXT)
 
 ### What needs to be done:
