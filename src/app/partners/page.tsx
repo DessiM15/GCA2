@@ -2,9 +2,32 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Mill Partners — Gulf Coast Alloys, LLC",
+  title: "Mill Partners",
   description:
     "Our direct partnerships with leading steel mills and manufacturers across South Korea and Vietnam.",
+  alternates: {
+    canonical: "/partners",
+  },
+  openGraph: {
+    title: "Mill Partners — Gulf Coast Alloys, LLC",
+    description:
+      "Our direct partnerships with leading steel mills and manufacturers across South Korea and Vietnam.",
+    url: "/partners",
+    images: [
+      {
+        url: "/images/partners-img.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Gulf Coast Alloys Mill Partners",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Mill Partners — Gulf Coast Alloys, LLC",
+    description:
+      "Our direct partnerships with leading steel mills and manufacturers across South Korea and Vietnam.",
+  },
 };
 
 const partnerCategories = [

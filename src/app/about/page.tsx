@@ -2,9 +2,32 @@ import type { Metadata } from "next";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "About — Gulf Coast Alloys, LLC",
+  title: "About",
   description:
     "Learn about Gulf Coast Alloys, our mission, and our commitment to quality metals and alloys for the oil & gas industry.",
+  alternates: {
+    canonical: "/about",
+  },
+  openGraph: {
+    title: "About — Gulf Coast Alloys, LLC",
+    description:
+      "Learn about Gulf Coast Alloys, our mission, and our commitment to quality metals and alloys for the oil & gas industry.",
+    url: "/about",
+    images: [
+      {
+        url: "/images/hero-1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "About Gulf Coast Alloys",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About — Gulf Coast Alloys, LLC",
+    description:
+      "Learn about Gulf Coast Alloys, our mission, and our commitment to quality metals and alloys for the oil & gas industry.",
+  },
 };
 
 export default function AboutPage() {

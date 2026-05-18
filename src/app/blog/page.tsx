@@ -5,9 +5,32 @@ import { posts } from "@/data/posts";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Blog — Gulf Coast Alloys, LLC",
+  title: "Blog",
   description:
     "Industry insights, technical knowledge, and company updates from Gulf Coast Alloys.",
+  alternates: {
+    canonical: "/blog",
+  },
+  openGraph: {
+    title: "Blog — Gulf Coast Alloys, LLC",
+    description:
+      "Industry insights, technical knowledge, and company updates from Gulf Coast Alloys.",
+    url: "/blog",
+    images: [
+      {
+        url: "/images/hero-1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Gulf Coast Alloys Blog",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog — Gulf Coast Alloys, LLC",
+    description:
+      "Industry insights, technical knowledge, and company updates from Gulf Coast Alloys.",
+  },
 };
 
 export default function BlogPage() {

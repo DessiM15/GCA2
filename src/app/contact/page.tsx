@@ -3,9 +3,32 @@ import ContactForm from "@/components/ContactForm";
 import ScrollReveal from "@/components/ScrollReveal";
 
 export const metadata: Metadata = {
-  title: "Contact — Gulf Coast Alloys, LLC",
+  title: "Contact",
   description:
     "Get in touch with Gulf Coast Alloys for a quote or to learn more about our metals and alloy products.",
+  alternates: {
+    canonical: "/contact",
+  },
+  openGraph: {
+    title: "Contact — Gulf Coast Alloys, LLC",
+    description:
+      "Get in touch with Gulf Coast Alloys for a quote or to learn more about our metals and alloy products.",
+    url: "/contact",
+    images: [
+      {
+        url: "/images/hero-1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Gulf Coast Alloys",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact — Gulf Coast Alloys, LLC",
+    description:
+      "Get in touch with Gulf Coast Alloys for a quote or to learn more about our metals and alloy products.",
+  },
 };
 
 export default function ContactPage() {

@@ -14,9 +14,51 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Gulf Coast Alloys, LLC — Strength in Every Alloy",
+  metadataBase: new URL("https://www.gulfcoastalloys.net"),
+  title: {
+    default: "Gulf Coast Alloys, LLC — Strength in Every Alloy",
+    template: "%s — Gulf Coast Alloys, LLC",
+  },
   description:
     "Gulf Coast Alloys supplies high-quality metals and alloys for oil & gas, petrochemical, construction, and manufacturing industries. Based in Houston, TX.",
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    siteName: "Gulf Coast Alloys, LLC",
+    title: "Gulf Coast Alloys, LLC — Strength in Every Alloy",
+    description:
+      "Gulf Coast Alloys supplies high-quality metals and alloys for oil & gas, petrochemical, construction, and manufacturing industries. Based in Houston, TX.",
+    url: "/",
+    images: [
+      {
+        url: "/images/hero-1.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Gulf Coast Alloys — Industrial metals and alloys supplier",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gulf Coast Alloys, LLC — Strength in Every Alloy",
+    description:
+      "Gulf Coast Alloys supplies high-quality metals and alloys for oil & gas, petrochemical, construction, and manufacturing industries. Based in Houston, TX.",
+    images: ["/images/hero-1.jpg"],
+  },
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
 };
 
 export default function RootLayout({
@@ -27,6 +69,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} h-full`}>
       <head>
+        {/* Preconnect to external origins for faster resource loading */}
+        <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://cdnjs.cloudflare.com" />
+
         <link
           rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
@@ -34,6 +80,13 @@ export default function RootLayout({
           crossOrigin="anonymous"
           referrerPolicy="no-referrer"
         />
+
+        {/* Google Search Console verification — replace content with your verification code */}
+        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
+
+        {/* Google Analytics 4 — uncomment and replace GA_MEASUREMENT_ID with your ID */}
+        {/* <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID" /> */}
+        {/* <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');` }} /> */}
       </head>
       <body className="min-h-full flex flex-col font-sans antialiased">
         <DemoModeProvider>
