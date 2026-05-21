@@ -77,9 +77,33 @@ const partnerCategories = [
   },
 ];
 
+const breadcrumbJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    {
+      "@type": "ListItem",
+      position: 1,
+      name: "Home",
+      item: "https://www.gulfcoastalloys.net",
+    },
+    {
+      "@type": "ListItem",
+      position: 2,
+      name: "Mill Partners",
+      item: "https://www.gulfcoastalloys.net/partners",
+    },
+  ],
+};
+
 export default function PartnersPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <section className="bg-navy-dark text-white pt-32 pb-20 sm:pt-40 sm:pb-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

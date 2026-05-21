@@ -36,22 +36,20 @@
 
 ---
 
-## Phase 2: Structured Data + Blog SEO (NEXT)
+## Phase 2: Structured Data + Blog SEO (COMPLETED)
 
-### What needs to be done:
-1. **JSON-LD structured data** — Add `Organization`, `LocalBusiness`, and `WebSite` schema to root layout
-2. **Article schema** — Add `Article` JSON-LD to each blog post page
-3. **Blog meta descriptions** — Review and hand-tune for better click-through rates
-4. **Breadcrumb structured data** — Add `BreadcrumbList` schema to blog posts and inner pages
+### What was done:
+1. **JSON-LD structured data** — Added `Organization`, `LocalBusiness`, and `WebSite` schema to root layout (`src/app/layout.tsx`) using `@graph` array in a single script tag with `@id` cross-references
+2. **Article schema** — Added `Article` JSON-LD to each blog post page (`src/app/blog/[slug]/page.tsx`) with headline, description, image, datePublished, author, publisher, and mainEntityOfPage
+3. **Author field** — Added `author` field to `BlogPost` interface and all posts in `src/data/posts.ts` (set to "Gulf Coast Alloys")
+4. **Breadcrumb structured data** — Added `BreadcrumbList` JSON-LD to all inner pages:
+   - `src/app/about/page.tsx` — Home > About
+   - `src/app/contact/page.tsx` — Home > Contact
+   - `src/app/partners/page.tsx` — Home > Mill Partners
+   - `src/app/blog/page.tsx` — Home > Blog
+   - `src/app/blog/[slug]/page.tsx` — Home > Blog > [Post Title]
 
-### Files to modify:
-- `src/app/layout.tsx` — Organization + LocalBusiness + WebSite JSON-LD
-- `src/app/blog/[slug]/page.tsx` — Article JSON-LD + BreadcrumbList
-- `src/app/about/page.tsx` — BreadcrumbList
-- `src/app/contact/page.tsx` — BreadcrumbList
-- `src/app/partners/page.tsx` — BreadcrumbList
-- `src/app/blog/page.tsx` — BreadcrumbList
-- `src/data/posts.ts` — May need author field added
+### Build status: Passing (13/13 static pages generated)
 
 ---
 

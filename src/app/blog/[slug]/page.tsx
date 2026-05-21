@@ -115,8 +115,68 @@ export default async function BlogPostPage({
     });
   };
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: post.title,
+    description: post.excerpt,
+    image: `https://www.gulfcoastalloys.net${post.image}`,
+    datePublished: post.date,
+    author: {
+      "@type": "Organization",
+      name: post.author,
+      url: "https://www.gulfcoastalloys.net",
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Gulf Coast Alloys, LLC",
+      logo: {
+        "@type": "ImageObject",
+        url: "https://www.gulfcoastalloys.net/images/hero-1.jpg",
+      },
+    },
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `https://www.gulfcoastalloys.net/blog/${post.slug}`,
+    },
+  };
+
+  const breadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: "https://www.gulfcoastalloys.net",
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: "https://www.gulfcoastalloys.net/blog",
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `https://www.gulfcoastalloys.net/blog/${post.slug}`,
+      },
+    ],
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+
       <section className="bg-navy-dark text-white pt-32 pb-20 sm:pt-40 sm:pb-28">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <ScrollReveal>

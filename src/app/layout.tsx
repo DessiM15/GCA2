@@ -79,6 +79,63 @@ export default function RootLayout({
           referrerPolicy="no-referrer"
         />
 
+        {/* Structured Data — Organization + LocalBusiness + WebSite */}
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": [
+                {
+                  "@type": "Organization",
+                  "@id": "https://www.gulfcoastalloys.net/#organization",
+                  name: "Gulf Coast Alloys, LLC",
+                  url: "https://www.gulfcoastalloys.net",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://www.gulfcoastalloys.net/images/hero-1.jpg",
+                  },
+                  contactPoint: {
+                    "@type": "ContactPoint",
+                    telephone: "+1-832-259-9102",
+                    contactType: "sales",
+                    email: "stacy@gulfcoastalloys.net",
+                    availableLanguage: ["English"],
+                  },
+                  sameAs: [],
+                },
+                {
+                  "@type": "LocalBusiness",
+                  "@id": "https://www.gulfcoastalloys.net/#localbusiness",
+                  name: "Gulf Coast Alloys, LLC",
+                  url: "https://www.gulfcoastalloys.net",
+                  telephone: "+1-832-259-9102",
+                  email: "stacy@gulfcoastalloys.net",
+                  image: "https://www.gulfcoastalloys.net/images/hero-1.jpg",
+                  description:
+                    "Gulf Coast Alloys supplies high-quality metals and alloys for oil & gas, petrochemical, construction, and manufacturing industries. Based in Houston, TX.",
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "Houston",
+                    addressRegion: "TX",
+                    addressCountry: "US",
+                  },
+                  priceRange: "$$",
+                },
+                {
+                  "@type": "WebSite",
+                  "@id": "https://www.gulfcoastalloys.net/#website",
+                  name: "Gulf Coast Alloys, LLC",
+                  url: "https://www.gulfcoastalloys.net",
+                  publisher: {
+                    "@id": "https://www.gulfcoastalloys.net/#organization",
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+
         {/* Google Search Console verification — replace content with your verification code */}
         {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
 

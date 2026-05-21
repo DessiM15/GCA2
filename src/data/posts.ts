@@ -5,6 +5,7 @@ export interface BlogPost {
   date: string;
   category: string;
   image: string;
+  author: string;
   content: string;
 }
 
@@ -17,6 +18,7 @@ export const posts: BlogPost[] = [
     date: "2025-04-15",
     category: "Industry Knowledge",
     image: "/images/blog-cuni.jpg",
+    author: "Gulf Coast Alloys",
     content: `Copper-Nickel (CuNi) alloys — particularly the 90/10 and 70/30 compositions — have long been recognized as the premier material for seawater piping systems in offshore oil & gas platforms, naval vessels, and coastal power plants.
 
 ## Why CuNi?
@@ -51,6 +53,7 @@ Whether you need standard CuNi fittings and flanges or custom specifications for
     date: "2025-03-28",
     category: "Industry Knowledge",
     image: "/images/blog-steel.jpg",
+    author: "Gulf Coast Alloys",
     content: `Choosing between carbon steel and stainless steel pipe is one of the most fundamental decisions in industrial piping design. The right choice depends on the specific service conditions, budget constraints, and long-term performance requirements of your project.
 
 ## Carbon Steel Pipe
@@ -96,6 +99,7 @@ Gulf Coast Alloys supplies both carbon steel and stainless steel pipe from trust
     date: "2025-03-10",
     category: "Company Spotlight",
     image: "/images/blog-korea.jpg",
+    author: "Gulf Coast Alloys",
     content: `Since our founding, Gulf Coast Alloys has built our business on a simple principle: go direct to the source. Our extensive network of mill partnerships in South Korea — spanning pipe mills, fitting manufacturers, and flange producers — is the foundation of everything we offer our customers.
 
 ## The South Korean Advantage
