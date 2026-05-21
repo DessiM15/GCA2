@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useTranslation } from "@/i18n";
 
 export default function CTAForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useTranslation();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -16,8 +18,8 @@ export default function CTAForm() {
         <svg className="mx-auto h-10 w-10 text-green-500" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-        <p className="mt-3 text-lg font-semibold text-green-800">Thank you!</p>
-        <p className="mt-1 text-sm text-green-700">We&apos;ll be in touch shortly.</p>
+        <p className="mt-3 text-lg font-semibold text-green-800">{t("ctaForm.thankYou")}</p>
+        <p className="mt-1 text-sm text-green-700">{t("ctaForm.thankYouMessage")}</p>
       </div>
     );
   }
@@ -29,36 +31,36 @@ export default function CTAForm() {
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
         <label htmlFor="cta-name" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          Name <span className="text-red-400">*</span>
+          {t("ctaForm.nameLabel")} <span className="text-red-400">*</span>
         </label>
-        <input type="text" id="cta-name" name="name" required className={inputClass} placeholder="Your name" />
+        <input type="text" id="cta-name" name="name" required className={inputClass} placeholder={t("ctaForm.namePlaceholder")} />
       </div>
       <div>
         <label htmlFor="cta-email" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          Email <span className="text-red-400">*</span>
+          {t("ctaForm.emailLabel")} <span className="text-red-400">*</span>
         </label>
-        <input type="email" id="cta-email" name="email" required className={inputClass} placeholder="you@company.com" />
+        <input type="email" id="cta-email" name="email" required className={inputClass} placeholder={t("ctaForm.emailPlaceholder")} />
       </div>
       <div>
         <label htmlFor="cta-phone" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          Phone
+          {t("ctaForm.phoneLabel")}
         </label>
-        <input type="tel" id="cta-phone" name="phone" className={inputClass} placeholder="(555) 123-4567" />
+        <input type="tel" id="cta-phone" name="phone" className={inputClass} placeholder={t("ctaForm.phonePlaceholder")} />
       </div>
       <div>
         <label htmlFor="cta-company" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          Company
+          {t("ctaForm.companyLabel")}
         </label>
-        <input type="text" id="cta-company" name="company" className={inputClass} placeholder="Your company" />
+        <input type="text" id="cta-company" name="company" className={inputClass} placeholder={t("ctaForm.companyPlaceholder")} />
       </div>
       <div>
         <label htmlFor="cta-message" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          How can we help? <span className="text-red-400">*</span>
+          {t("ctaForm.messageLabel")} <span className="text-red-400">*</span>
         </label>
-        <textarea id="cta-message" name="message" required rows={3} className={`${inputClass} resize-y`} placeholder="Tell us about your project..." />
+        <textarea id="cta-message" name="message" required rows={3} className={`${inputClass} resize-y`} placeholder={t("ctaForm.messagePlaceholder")} />
       </div>
       <button type="submit" className="w-full bg-navy py-4 text-sm font-semibold tracking-wide uppercase text-white hover:bg-navy-light transition-colors">
-        Submit Request
+        {t("ctaForm.submit")}
       </button>
     </form>
   );

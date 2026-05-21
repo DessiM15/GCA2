@@ -1,7 +1,20 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "@/i18n";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
+  const navLinks = [
+    { labelKey: "navbar.home", href: "/" },
+    { labelKey: "navbar.about", href: "/about" },
+    { labelKey: "navbar.partners", href: "/partners" },
+    { labelKey: "navbar.blog", href: "/blog" },
+    { labelKey: "navbar.contact", href: "/contact" },
+  ];
+
   return (
     <footer className="bg-navy-dark text-white">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
@@ -16,30 +29,23 @@ export default function Footer() {
               className="mb-4"
             />
             <p className="text-sm text-gray-400 leading-relaxed">
-              High-quality metals and alloys for oil &amp; gas, petrochemical,
-              construction, and manufacturing.
+              {t("footer.description")}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-4">
-              Navigation
+              {t("footer.navigation")}
             </h3>
             <ul className="space-y-3 text-sm">
-              {[
-                { label: "Home", href: "/" },
-                { label: "About", href: "/about" },
-                { label: "Partners", href: "/partners" },
-                { label: "Blog", href: "/blog" },
-                { label: "Contact", href: "/contact" },
-              ].map((link) => (
-                <li key={link.label}>
+              {navLinks.map((link) => (
+                <li key={link.href}>
                   <Link
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors"
                   >
-                    {link.label}
+                    {t(link.labelKey)}
                   </Link>
                 </li>
               ))}
@@ -49,20 +55,20 @@ export default function Footer() {
           {/* Services */}
           <div>
             <h3 className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-4">
-              Capabilities
+              {t("footer.capabilities")}
             </h3>
             <ul className="space-y-3 text-sm text-gray-300">
-              <li>Pipe (Seamless, Welded, SAW)</li>
-              <li>BW &amp; Forged Fittings</li>
-              <li>Flanges (All Grades)</li>
-              <li>CuNi Products</li>
+              <li>{t("footer.pipe")}</li>
+              <li>{t("footer.fittings")}</li>
+              <li>{t("footer.flanges")}</li>
+              <li>{t("footer.cuni")}</li>
             </ul>
           </div>
 
           {/* Contact */}
           <div>
             <h3 className="text-xs font-semibold tracking-[0.2em] uppercase text-gray-400 mb-4">
-              Contact
+              {t("footer.contact")}
             </h3>
             <ul className="space-y-3 text-sm text-gray-300">
               <li>
@@ -88,11 +94,10 @@ export default function Footer() {
 
         <div className="mt-14 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-gray-500">
-            &copy; {new Date().getFullYear()} Gulf Coast Alloys, LLC. All rights
-            reserved.
+            &copy; {new Date().getFullYear()} {t("footer.copyright")}
           </p>
           <p className="text-xs text-gray-500">
-            Houston, Texas &mdash; Strength in Every Alloy
+            {t("footer.tagline")}
           </p>
         </div>
       </div>

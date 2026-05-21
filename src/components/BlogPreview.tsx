@@ -1,10 +1,14 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import { posts } from "@/data/posts";
 import ScrollReveal from "./ScrollReveal";
+import { useTranslation } from "@/i18n";
 
 export default function BlogPreview() {
   const latestPosts = posts.slice(0, 3);
+  const { t } = useTranslation();
 
   return (
     <section id="blog" className="py-24 sm:py-32 bg-white">
@@ -13,17 +17,17 @@ export default function BlogPreview() {
           <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between mb-16">
             <div>
               <p className="text-steel text-sm tracking-[0.3em] uppercase font-medium mb-4">
-                Insights
+                {t("blogPreview.subtitle")}
               </p>
               <h2 className="text-4xl sm:text-5xl font-bold text-navy">
-                Latest Articles
+                {t("blogPreview.title")}
               </h2>
             </div>
             <Link
               href="/blog"
               className="inline-flex items-center gap-2 mt-6 sm:mt-0 text-sm font-semibold tracking-wide uppercase text-navy hover:text-steel transition-colors group"
             >
-              View All
+              {t("blogPreview.viewAll")}
               <svg className="h-4 w-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
               </svg>
@@ -61,7 +65,7 @@ export default function BlogPreview() {
                       {post.excerpt}
                     </p>
                     <span className="inline-flex items-center gap-1 mt-6 text-xs font-semibold tracking-wide uppercase text-navy group-hover:text-steel transition-colors">
-                      Read More
+                      {t("blogPreview.readMore")}
                       <svg className="h-3 w-3 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" strokeWidth={2.5} stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
                       </svg>

@@ -4,6 +4,7 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SplashScreen from "@/components/SplashScreen";
 import ClickToCall from "@/components/ClickToCall";
+import { LanguageProvider } from "@/i18n";
 import "./globals.css";
 
 const inter = Inter({
@@ -144,12 +145,14 @@ export default function RootLayout({
         {/* <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','GA_MEASUREMENT_ID');` }} /> */}
       </head>
       <body className="min-h-full flex flex-col font-sans antialiased">
-        <SplashScreen>
-          <Navbar />
-          <main className="flex-1">{children}</main>
-          <Footer />
-          <ClickToCall />
-        </SplashScreen>
+        <LanguageProvider>
+          <SplashScreen>
+            <Navbar />
+            <main className="flex-1">{children}</main>
+            <Footer />
+            <ClickToCall />
+          </SplashScreen>
+        </LanguageProvider>
       </body>
     </html>
   );

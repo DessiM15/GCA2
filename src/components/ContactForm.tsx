@@ -1,9 +1,11 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { useTranslation } from "@/i18n";
 
 export default function ContactForm() {
   const [submitted, setSubmitted] = useState(false);
+  const { t } = useTranslation();
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -17,10 +19,10 @@ export default function ContactForm() {
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
         <h3 className="mt-4 text-lg font-semibold text-green-800">
-          Thank you for reaching out.
+          {t("contactForm.thankYou")}
         </h3>
         <p className="mt-2 text-sm text-green-700">
-          We&apos;ve received your message and will respond promptly.
+          {t("contactForm.thankYouMessage")}
         </p>
       </div>
     );
@@ -34,34 +36,34 @@ export default function ContactForm() {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div>
           <label htmlFor="name" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-            Name <span className="text-red-400">*</span>
+            {t("contactForm.nameLabel")} <span className="text-red-400">*</span>
           </label>
-          <input type="text" id="name" name="name" required className={inputClass} placeholder="Your name" />
+          <input type="text" id="name" name="name" required className={inputClass} placeholder={t("contactForm.namePlaceholder")} />
         </div>
         <div>
           <label htmlFor="email" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-            Email <span className="text-red-400">*</span>
+            {t("contactForm.emailLabel")} <span className="text-red-400">*</span>
           </label>
-          <input type="email" id="email" name="email" required className={inputClass} placeholder="you@company.com" />
+          <input type="email" id="email" name="email" required className={inputClass} placeholder={t("contactForm.emailPlaceholder")} />
         </div>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
         <div>
           <label htmlFor="phone" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-            Phone
+            {t("contactForm.phoneLabel")}
           </label>
-          <input type="tel" id="phone" name="phone" className={inputClass} placeholder="(555) 123-4567" />
+          <input type="tel" id="phone" name="phone" className={inputClass} placeholder={t("contactForm.phonePlaceholder")} />
         </div>
         <div>
           <label htmlFor="company" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-            Company
+            {t("contactForm.companyLabel")}
           </label>
-          <input type="text" id="company" name="company" className={inputClass} placeholder="Your company" />
+          <input type="text" id="company" name="company" className={inputClass} placeholder={t("contactForm.companyPlaceholder")} />
         </div>
       </div>
       <div>
         <label htmlFor="message" className="block text-xs font-medium tracking-wider uppercase text-gray-500 mb-1">
-          Message <span className="text-red-400">*</span>
+          {t("contactForm.messageLabel")} <span className="text-red-400">*</span>
         </label>
         <textarea
           id="message"
@@ -69,14 +71,14 @@ export default function ContactForm() {
           required
           rows={4}
           className={`${inputClass} resize-y`}
-          placeholder="Tell us about your project or request a quote..."
+          placeholder={t("contactForm.messagePlaceholder")}
         />
       </div>
       <button
         type="submit"
         className="bg-navy px-10 py-4 text-sm font-semibold tracking-wide uppercase text-white hover:bg-navy-light transition-colors"
       >
-        Send Message
+        {t("contactForm.submit")}
       </button>
     </form>
   );

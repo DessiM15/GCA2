@@ -1,18 +1,20 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslation } from "@/i18n";
 
 const sections = [
-  { id: "hero", label: "Home" },
-  { id: "about", label: "About" },
-  { id: "services", label: "Services" },
-  { id: "partners", label: "Partners" },
-  { id: "blog", label: "Blog" },
-  { id: "cta", label: "Contact" },
+  { id: "hero", labelKey: "dotNav.home" },
+  { id: "about", labelKey: "dotNav.about" },
+  { id: "services", labelKey: "dotNav.services" },
+  { id: "partners", labelKey: "dotNav.partners" },
+  { id: "blog", labelKey: "dotNav.blog" },
+  { id: "cta", labelKey: "dotNav.contact" },
 ];
 
 export default function DotNav() {
   const [active, setActive] = useState("hero");
+  const { t } = useTranslation();
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -36,15 +38,15 @@ export default function DotNav() {
 
   return (
     <div className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden lg:flex flex-col gap-3">
-      {sections.map(({ id, label }) => (
+      {sections.map(({ id, labelKey }) => (
         <a
           key={id}
           href={`#${id}`}
           className="group flex items-center gap-3 justify-end"
-          aria-label={label}
+          aria-label={t(labelKey)}
         >
           <span className="text-xs font-medium text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-            {label}
+            {t(labelKey)}
           </span>
           <span
             className={`block rounded-full transition-all duration-300 ${

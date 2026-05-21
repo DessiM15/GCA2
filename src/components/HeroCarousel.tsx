@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, EffectFade } from "swiper/modules";
 import Image from "next/image";
 import Link from "next/link";
+import { useTranslation } from "@/i18n";
 import "swiper/css";
 import "swiper/css/effect-fade";
 
@@ -31,6 +32,8 @@ const slides = [
 ];
 
 export default function HeroCarousel() {
+  const { t } = useTranslation();
+
   return (
     <section id="hero" className="relative h-screen min-h-[600px] max-h-[1000px]">
       <Swiper
@@ -60,29 +63,28 @@ export default function HeroCarousel() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 w-full">
           <div className="max-w-2xl">
             <p className="text-steel-light text-sm tracking-[0.3em] uppercase mb-4 font-medium">
-              Houston, Texas
+              {t("hero.location")}
             </p>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] text-white">
-              Strength in
+              {t("hero.headline1")}
               <br />
-              <span className="text-steel-light">Every Alloy</span>
+              <span className="text-steel-light">{t("hero.headline2")}</span>
             </h1>
             <p className="mt-6 text-lg sm:text-xl text-gray-300 leading-relaxed max-w-lg">
-              High-quality metals and alloys for oil &amp; gas, petrochemical,
-              construction, and manufacturing.
+              {t("hero.description")}
             </p>
             <div className="mt-10 flex flex-col sm:flex-row gap-4 pointer-events-auto">
               <Link
                 href="/contact"
                 className="inline-flex items-center justify-center rounded-none bg-steel px-8 py-4 text-sm font-semibold tracking-wide uppercase text-white hover:bg-steel-light transition-colors"
               >
-                Request a Quote
+                {t("hero.cta")}
               </Link>
               <Link
                 href="/about"
                 className="inline-flex items-center justify-center rounded-none border border-white/40 px-8 py-4 text-sm font-semibold tracking-wide uppercase text-white hover:bg-white/10 transition-colors"
               >
-                Learn More
+                {t("hero.learnMore")}
               </Link>
             </div>
           </div>
@@ -92,7 +94,7 @@ export default function HeroCarousel() {
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2">
         <span className="text-white/50 text-xs tracking-[0.2em] uppercase">
-          Scroll
+          {t("hero.scroll")}
         </span>
         <div className="w-px h-10 bg-gradient-to-b from-white/50 to-transparent animate-pulse" />
       </div>

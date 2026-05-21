@@ -1,24 +1,28 @@
+"use client";
+
 import ScrollReveal from "./ScrollReveal";
 import CTAForm from "./CTAForm";
+import { useTranslation } from "@/i18n";
 
 export default function CTASection() {
+  const { t } = useTranslation();
+
   return (
     <section id="cta" className="py-24 sm:py-32 bg-gray-50">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           <ScrollReveal direction="left">
             <p className="text-steel text-sm tracking-[0.3em] uppercase font-medium mb-4">
-              Get Started
+              {t("cta.subtitle")}
             </p>
             <h2 className="text-4xl sm:text-5xl font-bold text-navy leading-tight">
-              Ready to Discuss
+              {t("cta.title1")}
               <br />
-              Your Next Project?
+              {t("cta.title2")}
             </h2>
             <div className="h-1 w-16 bg-steel mt-6 mb-8" />
             <p className="text-lg text-gray-600 leading-relaxed">
-              Whether you need a competitive quote, technical specifications, or
-              guidance on material selection — our team is here to help.
+              {t("cta.description")}
             </p>
             <div className="mt-8 space-y-4 text-sm text-gray-600">
               <div className="flex items-center gap-3">
@@ -50,7 +54,7 @@ export default function CTASection() {
           <ScrollReveal direction="right" delay={0.2}>
             <div className="bg-white border border-gray-200 p-8 sm:p-10 shadow-sm">
               <h3 className="text-xl font-bold text-navy mb-6">
-                Request a Quote
+                {t("cta.formTitle")}
               </h3>
               <CTAForm />
             </div>

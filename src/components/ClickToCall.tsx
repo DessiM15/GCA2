@@ -1,7 +1,10 @@
 "use client";
 import { motion } from "framer-motion";
+import { useTranslation } from "@/i18n";
 
 export default function ClickToCall() {
+  const { t } = useTranslation();
+
   return (
     <motion.a
       href="tel:+18322599102"
@@ -9,7 +12,7 @@ export default function ClickToCall() {
       animate={{ opacity: 1, scale: 1 }}
       transition={{ delay: 2, type: "spring", stiffness: 300, damping: 20 }}
       className="fixed bottom-6 right-6 z-[60] w-14 h-14 rounded-full bg-steel shadow-lg shadow-steel/30 flex items-center justify-center hover:bg-steel-light hover:shadow-xl hover:scale-110 transition-all group"
-      aria-label="Call Gulf Coast Alloys"
+      aria-label={t("clickToCall.label")}
     >
       <svg
         className="h-6 w-6 text-white group-hover:animate-pulse"
@@ -26,7 +29,7 @@ export default function ClickToCall() {
       </svg>
       {/* Tooltip */}
       <span className="absolute right-full mr-3 whitespace-nowrap bg-navy text-white text-xs font-medium px-3 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow-lg">
-        (832) 259-9102
+        {t("clickToCall.tooltip")}
       </span>
     </motion.a>
   );

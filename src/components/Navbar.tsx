@@ -3,10 +3,13 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useTranslation } from "@/i18n";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     function onScroll() {
@@ -18,14 +21,14 @@ export default function Navbar() {
   }, []);
 
   const leftLinks = [
-    { label: "Home", href: "/" },
-    { label: "About", href: "/about" },
+    { label: t("navbar.home"), href: "/" },
+    { label: t("navbar.about"), href: "/about" },
   ];
 
   const rightLinks = [
-    { label: "Partners", href: "/partners" },
-    { label: "Blog", href: "/blog" },
-    { label: "Contact", href: "/contact" },
+    { label: t("navbar.partners"), href: "/partners" },
+    { label: t("navbar.blog"), href: "/blog" },
+    { label: t("navbar.contact"), href: "/contact" },
   ];
 
   const allLinks = [...leftLinks, ...rightLinks];
@@ -49,7 +52,7 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-8 flex-1 justify-end pr-10">
                 {leftLinks.map((link) => (
                   <Link
-                    key={link.label}
+                    key={link.href}
                     href={link.href}
                     className="text-[13px] font-medium tracking-wide uppercase text-white/80 hover:text-white transition-colors"
                   >
@@ -70,13 +73,16 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-8 flex-1 pl-10">
                 {rightLinks.map((link) => (
                   <Link
-                    key={link.label}
+                    key={link.href}
                     href={link.href}
                     className="text-[13px] font-medium tracking-wide uppercase text-white/80 hover:text-white transition-colors"
                   >
                     {link.label}
                   </Link>
                 ))}
+                <div className="ml-auto">
+                  <LanguageSwitcher />
+                </div>
               </div>
             </>
           ) : (
@@ -96,13 +102,14 @@ export default function Navbar() {
               <div className="hidden md:flex items-center gap-8">
                 {allLinks.map((link) => (
                   <Link
-                    key={link.label}
+                    key={link.href}
                     href={link.href}
                     className="text-[13px] font-medium tracking-wide uppercase text-white/90 hover:text-white transition-colors drop-shadow-sm"
                   >
                     {link.label}
                   </Link>
                 ))}
+                <LanguageSwitcher />
               </div>
             </>
           )}
@@ -144,7 +151,7 @@ export default function Navbar() {
           <div className="px-4 py-4 space-y-1">
             {allLinks.map((link) => (
               <Link
-                key={link.label}
+                key={link.href}
                 href={link.href}
                 onClick={() => setMobileOpen(false)}
                 className={`block py-2.5 text-sm font-medium tracking-wide uppercase transition-colors ${
@@ -156,6 +163,9 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+            <div className="pt-4 border-t border-white/10">
+              <LanguageSwitcher />
+            </div>
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useTranslation } from "@/i18n";
 
 export default function SplashScreen({
   children,
@@ -10,6 +11,7 @@ export default function SplashScreen({
   children: React.ReactNode;
 }) {
   const [showSplash, setShowSplash] = useState(true);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const timer = setTimeout(() => setShowSplash(false), 2800);
@@ -51,7 +53,7 @@ export default function SplashScreen({
                 className="text-center"
               >
                 <h1 className="text-2xl sm:text-3xl font-bold text-white tracking-wide">
-                  GULF COAST ALLOYS
+                  {t("splash.companyName")}
                 </h1>
                 <motion.div
                   initial={{ scaleX: 0 }}
@@ -65,7 +67,7 @@ export default function SplashScreen({
                   transition={{ delay: 1.5, duration: 0.5 }}
                   className="text-steel-light text-sm tracking-[0.25em] mt-3 uppercase"
                 >
-                  Strength in Every Alloy
+                  {t("splash.tagline")}
                 </motion.p>
               </motion.div>
             </motion.div>
