@@ -100,6 +100,24 @@ export default function Footer() {
             {t("footer.tagline")}
           </p>
         </div>
+
+        <div className="mt-8 flex items-center justify-center gap-2">
+          <span className="text-sm text-gray-400">Powered by</span>
+          <a
+            href="https://botmakers.ai"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center hover:opacity-80 transition-opacity"
+          >
+            <Image
+              src="/images/botmakers-white-green-logo.png"
+              alt="Botmakers.ai"
+              width={140}
+              height={32}
+              className="object-contain"
+            />
+          </a>
+        </div>
       </div>
     </footer>
   );
